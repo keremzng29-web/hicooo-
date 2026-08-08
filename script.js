@@ -105,6 +105,7 @@ const shootingStars = document.getElementById("shootingStars");
 const wishStars = document.getElementById("wishStars");
 const wishBtn = document.getElementById("wishBtn");
 const wishMessage = document.getElementById("wishMessage");
+const wishReveal = document.getElementById("wishReveal");
 
 function createShootingStar() {
     if (!shootingStars) return;
@@ -119,13 +120,11 @@ function createShootingStar() {
     setTimeout(() => star.remove(), 1400);
 }
 
-// Bölüm ekranda olmasa bile yıldızlar güvenli şekilde çalışır
 setInterval(() => {
     if (!starSection) return;
     if (Math.random() < 0.8) createShootingStar();
 }, 1800);
 
-// Sayfa yıldızlı bölüme geldiğinde ilk kayan yıldızlardan birini göster
 if (starSection) {
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -138,7 +137,7 @@ if (starSection) {
     observer.observe(starSection);
 }
 
-// Dilek tutulduğunda yıldız parçacıkları ve peş peşe kayan yıldızlar
+// Dilek tutulduğunda yıldız parçacıkları
 function createWishSpark() {
     if (!wishStars) return;
 
@@ -156,17 +155,23 @@ if (wishBtn) {
     wishBtn.addEventListener("click", function () {
         if (starSection) starSection.classList.add("wish-active");
 
+        // Butona basınca önce dilek mesajı, ardından asıl romantik yazı açılır
         wishMessage.textContent = "Dileğini tuttun... Şimdi gökyüzüne bırak ✨";
         wishMessage.classList.add("wish-made");
+
+        if (wishReveal) {
+            setTimeout(() => wishReveal.classList.add("show"), 700);
+        }
 
         for (let s = 0; s < 35; s++) {
             setTimeout(createWishSpark, s * 35);
         }
 
-        for (let s = 0; s < 5; s++) {
+        for (let s = 0; s < 7; s++) {
             setTimeout(createShootingStar, s * 280);
         }
 
+        // Buton tekrar basılırsa efekt yeniden çalışsın
         setTimeout(() => {
             wishMessage.textContent = "Belki de en güzel dileğin zaten yanında... ❤️";
         }, 3200);
