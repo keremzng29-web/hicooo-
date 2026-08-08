@@ -2,7 +2,7 @@ const button = document.getElementById("startBtn");
 
 // Giriş butonu
 button.addEventListener("click", function () {
-    document.getElementById("bgMusic").play();
+    document.getElementById("bgMusic").play().catch(() => {});
     document.getElementById("hero").style.display = "none";
     document.querySelector(".gallery").style.display = "block";
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -88,7 +88,7 @@ openLetter.addEventListener("click", function () {
     openLetter.style.display = "none";
 });
 
-// YILDIZLAR
+// ARKA PLAN YILDIZLARI
 const stars = document.getElementById("stars");
 for (let s = 0; s < 120; s++) {
     const star = document.createElement("div");
@@ -99,30 +99,79 @@ for (let s = 0; s < 120; s++) {
     stars.appendChild(star);
 }
 
-// YILDIZLI BÖLÜMDE KAYAN YILDIZLAR ✨
-const shootingStyle = document.createElement("style");
-shootingStyle.textContent = `
-.shooting-star{position:absolute;width:3px;height:3px;background:#fff;border-radius:50%;box-shadow:0 0 6px #fff,0 0 14px #fff,0 0 28px rgba(255,255,255,.9);z-index:2;pointer-events:none;opacity:0}
-.shooting-star::after{content:"";position:absolute;right:2px;top:1px;width:120px;height:2px;background:linear-gradient(90deg,rgba(255,255,255,0),rgba(255,255,255,.9));transform:rotate(-35deg);transform-origin:right center;border-radius:50%}
-.shooting-star.go{animation:shootingStar 1.4s linear forwards}
-@keyframes shootingStar{0%{opacity:0;transform:translate(0,0) scale(.6)}10%{opacity:1}100%{opacity:0;transform:translate(-360px,260px) scale(1.4)}}
-`;
-document.head.appendChild(shootingStyle);
-
+// YILDIZLI BÖLÜM: KAYAN YILDIZLAR + DİLEK TUTMA
 const starSection = document.getElementById("starLoveSection");
-function createShootingStar(){
-    if(!starSection) return;
+const shootingStars = document.getElementById("shootingStars");
+const wishStars = document.getElementById("wishStars");
+const wishBtn = document.getElementById("wishBtn");
+const wishMessage = document.getElementById("wishMessage");
+
+function createShootingStar() {
+    if (!shootingStars) return;
+
     const star = document.createElement("span");
     star.className = "shooting-star";
-    star.style.left = (35 + Math.random() * 65) + "%";
-    star.style.top = (5 + Math.random() * 45) + "%";
-    starSection.appendChild(star);
+    star.style.left = (45 + Math.random() * 55) + "%";
+    star.style.top = (2 + Math.random() * 42) + "%";
+    shootingStars.appendChild(star);
+
     requestAnimationFrame(() => star.classList.add("go"));
-    setTimeout(() => star.remove(), 1500);
+    setTimeout(() => star.remove(), 1400);
 }
+
+// Bölüm ekranda olmasa bile yıldızlar güvenli şekilde çalışır
 setInterval(() => {
-    if(Math.random() < 0.75) createShootingStar();
+    if (!starSection) return;
+    if (Math.random() < 0.8) createShootingStar();
 }, 1800);
+
+// Sayfa yıldızlı bölüme geldiğinde ilk kayan yıldızlardan birini göster
+if (starSection) {
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                createShootingStar();
+                setTimeout(createShootingStar, 900);
+            }
+        });
+    }, { threshold: 0.25 });
+    observer.observe(starSection);
+}
+
+// Dilek tutulduğunda yıldız parçacıkları ve peş peşe kayan yıldızlar
+function createWishSpark() {
+    if (!wishStars) return;
+
+    const spark = document.createElement("span");
+    spark.className = "wish-spark";
+    spark.style.left = (35 + Math.random() * 30) + "%";
+    spark.style.top = (35 + Math.random() * 30) + "%";
+    spark.style.setProperty("--dx", (Math.random() * 300 - 150) + "px");
+    spark.style.setProperty("--dy", (Math.random() * 300 - 150) + "px");
+    wishStars.appendChild(spark);
+    setTimeout(() => spark.remove(), 1500);
+}
+
+if (wishBtn) {
+    wishBtn.addEventListener("click", function () {
+        if (starSection) starSection.classList.add("wish-active");
+
+        wishMessage.textContent = "Dileğini tuttun... Şimdi gökyüzüne bırak ✨";
+        wishMessage.classList.add("wish-made");
+
+        for (let s = 0; s < 35; s++) {
+            setTimeout(createWishSpark, s * 35);
+        }
+
+        for (let s = 0; s < 5; s++) {
+            setTimeout(createShootingStar, s * 280);
+        }
+
+        setTimeout(() => {
+            wishMessage.textContent = "Belki de en güzel dileğin zaten yanında... ❤️";
+        }, 3200);
+    });
+}
 
 // GİZLİ AŞK MESAJI
 const secretBtn = document.getElementById("secretBtn");
