@@ -99,6 +99,31 @@ for (let s = 0; s < 120; s++) {
     stars.appendChild(star);
 }
 
+// YILDIZLI BÖLÜMDE KAYAN YILDIZLAR ✨
+const shootingStyle = document.createElement("style");
+shootingStyle.textContent = `
+.shooting-star{position:absolute;width:3px;height:3px;background:#fff;border-radius:50%;box-shadow:0 0 6px #fff,0 0 14px #fff,0 0 28px rgba(255,255,255,.9);z-index:2;pointer-events:none;opacity:0}
+.shooting-star::after{content:"";position:absolute;right:2px;top:1px;width:120px;height:2px;background:linear-gradient(90deg,rgba(255,255,255,0),rgba(255,255,255,.9));transform:rotate(-35deg);transform-origin:right center;border-radius:50%}
+.shooting-star.go{animation:shootingStar 1.4s linear forwards}
+@keyframes shootingStar{0%{opacity:0;transform:translate(0,0) scale(.6)}10%{opacity:1}100%{opacity:0;transform:translate(-360px,260px) scale(1.4)}}
+`;
+document.head.appendChild(shootingStyle);
+
+const starSection = document.getElementById("starLoveSection");
+function createShootingStar(){
+    if(!starSection) return;
+    const star = document.createElement("span");
+    star.className = "shooting-star";
+    star.style.left = (35 + Math.random() * 65) + "%";
+    star.style.top = (5 + Math.random() * 45) + "%";
+    starSection.appendChild(star);
+    requestAnimationFrame(() => star.classList.add("go"));
+    setTimeout(() => star.remove(), 1500);
+}
+setInterval(() => {
+    if(Math.random() < 0.75) createShootingStar();
+}, 1800);
+
 // GİZLİ AŞK MESAJI
 const secretBtn = document.getElementById("secretBtn");
 const secretBox = document.getElementById("secretBox");
