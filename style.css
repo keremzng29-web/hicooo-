@@ -31,6 +31,10 @@ button:hover{transform:scale(1.08);box-shadow:0 0 30px #ff4f8b}
 
 /* YILDIZLI ÖZEL BÖLÜM */
 .star-love{min-height:100vh;padding:100px 20px;background:linear-gradient(180deg,#03000a 0%,#090012 50%,#03000a 100%);display:flex;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden}
+/* Bu bölümün kendi yıldız gökyüzü */
+.star-love::before,.star-love::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:1;background-repeat:repeat;}
+.star-love::before{opacity:.9;background-image:radial-gradient(circle at 7% 18%,#fff 0 1.5px,transparent 2px),radial-gradient(circle at 18% 72%,#fff 0 1px,transparent 1.8px),radial-gradient(circle at 31% 28%,#fff 0 1.5px,transparent 2px),radial-gradient(circle at 44% 82%,#fff 0 1px,transparent 1.8px),radial-gradient(circle at 58% 15%,#fff 0 1.5px,transparent 2px),radial-gradient(circle at 71% 67%,#fff 0 1px,transparent 1.8px),radial-gradient(circle at 84% 25%,#fff 0 1.5px,transparent 2px),radial-gradient(circle at 94% 78%,#fff 0 1px,transparent 1.8px);animation:starDrift 8s ease-in-out infinite alternate}
+.star-love::after{opacity:.6;background-image:radial-gradient(circle at 12% 48%,#fff 0 1px,transparent 1.7px),radial-gradient(circle at 25% 12%,#fff 0 1px,transparent 1.7px),radial-gradient(circle at 39% 58%,#fff 0 1.5px,transparent 2px),radial-gradient(circle at 52% 35%,#fff 0 1px,transparent 1.7px),radial-gradient(circle at 67% 88%,#fff 0 1.5px,transparent 2px),radial-gradient(circle at 79% 48%,#fff 0 1px,transparent 1.7px),radial-gradient(circle at 91% 10%,#fff 0 1.5px,transparent 2px);animation:starTwinkle 3s ease-in-out infinite alternate}
 .star-love-content{position:relative;z-index:2;max-width:900px;padding:60px 30px}
 .star-love-content>p:first-child{font-size:24px;letter-spacing:5px;color:#ddd;margin-bottom:25px}
 .star-love h2{font-size:72px;letter-spacing:6px;margin-bottom:25px;color:#fff;text-shadow:0 0 15px #fff,0 0 35px rgba(255,79,139,.9),0 0 70px rgba(255,79,139,.6)}
@@ -38,6 +42,8 @@ button:hover{transform:scale(1.08);box-shadow:0 0 30px #ff4f8b}
 .star-love-line{width:120px;height:2px;margin:20px auto 35px;background:#ff4f8b;box-shadow:0 0 15px #ff4f8b}
 .star-love-message{font-size:25px;line-height:1.8;color:#fff;text-shadow:0 0 12px rgba(255,255,255,.35);max-width:850px;margin:auto}
 @keyframes starHeartPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.15)}}
+@keyframes starDrift{from{transform:scale(1);opacity:.65}to{transform:scale(1.04);opacity:1}}
+@keyframes starTwinkle{from{opacity:.25}to{opacity:.9}}
 
 #lightbox{display:none;position:fixed;inset:0;background:rgba(0,0,0,.95);z-index:9999;justify-content:center;align-items:center}
 #lightbox img{max-width:90%;max-height:90%;border-radius:20px;box-shadow:0 0 40px rgba(255,255,255,.2)}
