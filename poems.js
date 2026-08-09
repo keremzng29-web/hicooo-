@@ -58,13 +58,15 @@ Sözün şiirlerin mükemmelidir
 Senden başkasını seven delidir
 Yüzün çiçeklerin en güzelidir
 Gözlerin bilinmez bir diyar gibi`,`Oysa benim
-Gönül kapım
+gönül kapım
 kilitli ve şifreliydi...
+
 Demek bütün
 kodlar ve şifreler
 senin bakışlarında gizli...
+
 Herkes birine yanık
-Ben sana kuzum...`];
+Ben sana külüm...`];
 let poemIndex = -1;
 const poemText = document.getElementById('poemText');
 const poemBtn = document.getElementById('poemBtn');
