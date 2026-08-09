@@ -1,6 +1,5 @@
 const button = document.getElementById("startBtn");
 
-// Giriş butonu
 button.addEventListener("click", function () {
     document.getElementById("bgMusic").play().catch(() => {});
     document.getElementById("hero").style.display = "none";
@@ -8,7 +7,6 @@ button.addEventListener("click", function () {
     window.scrollTo({ top: 0, behavior: "smooth" });
 });
 
-// SAYAÇ
 const startDate = new Date("2026-06-02T00:00:00");
 function updateCounter() {
     const now = new Date();
@@ -26,7 +24,6 @@ function updateCounter() {
 updateCounter();
 setInterval(updateCounter, 1000);
 
-// FOTOĞRAF BÜYÜTME
 const images = document.querySelectorAll(".gallery-grid img");
 const lightbox = document.getElementById("lightbox");
 const lightboxImage = document.getElementById("lightboxImage");
@@ -42,7 +39,6 @@ lightbox.addEventListener("click", function (e) {
     if (e.target === lightbox) lightbox.style.display = "none";
 });
 
-// UÇUŞAN KALPLER
 function createHeart() {
     const heart = document.createElement("div");
     heart.innerHTML = ["❤️", "💗", "💖", "💕", "💘", "💓"][Math.floor(Math.random() * 6)];
@@ -54,7 +50,6 @@ function createHeart() {
 }
 setInterval(createHeart, 400);
 
-// DAKTİLO EFEKTİ
 const message = `Hayatıma girdiğin günden beri her şey değişti
 
 Seninle tanıştığım gün benim en güzel başlangıcımdı
@@ -88,7 +83,6 @@ openLetter.addEventListener("click", function () {
     openLetter.style.display = "none";
 });
 
-// ARKA PLAN YILDIZLARI
 const stars = document.getElementById("stars");
 for (let s = 0; s < 120; s++) {
     const star = document.createElement("div");
@@ -99,7 +93,6 @@ for (let s = 0; s < 120; s++) {
     stars.appendChild(star);
 }
 
-// YILDIZLI BÖLÜM: KAYAN YILDIZLAR + DİLEK TUTMA
 const starSection = document.getElementById("starLoveSection");
 const shootingStars = document.getElementById("shootingStars");
 const wishStars = document.getElementById("wishStars");
@@ -117,12 +110,9 @@ function createShootingStar() {
     requestAnimationFrame(() => star.classList.add("go"));
     setTimeout(() => star.remove(), 1400);
 }
-
 setInterval(() => {
-    if (!starSection) return;
-    if (Math.random() < 0.8) createShootingStar();
+    if (starSection && Math.random() < 0.8) createShootingStar();
 }, 1800);
-
 if (starSection) {
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -134,7 +124,6 @@ if (starSection) {
     }, { threshold: 0.25 });
     observer.observe(starSection);
 }
-
 function createWishSpark() {
     if (!wishStars) return;
     const spark = document.createElement("span");
@@ -146,7 +135,6 @@ function createWishSpark() {
     wishStars.appendChild(spark);
     setTimeout(() => spark.remove(), 1500);
 }
-
 if (wishBtn) {
     wishBtn.addEventListener("click", function () {
         if (starSection) starSection.classList.add("wish-active");
@@ -155,18 +143,14 @@ if (wishBtn) {
         if (wishReveal) setTimeout(() => wishReveal.classList.add("show"), 700);
         for (let s = 0; s < 35; s++) setTimeout(createWishSpark, s * 35);
         for (let s = 0; s < 7; s++) setTimeout(createShootingStar, s * 280);
-        setTimeout(() => {
-            wishMessage.textContent = "Belki de en güzel dileğin zaten yanında... ❤️";
-        }, 3200);
+        setTimeout(() => { wishMessage.textContent = "Belki de en güzel dileğin zaten yanında... ❤️"; }, 3200);
     });
 }
 
-// GİZLİ AŞK MESAJI
 const secretBtn = document.getElementById("secretBtn");
 const secretBox = document.getElementById("secretBox");
 const closeSecret = document.getElementById("closeSecret");
 const secretText = document.getElementById("secretText");
-
 const secretMessage =
 "Seninle tanıştığım günden beri hayatımın bazı yerleri hiç eskisi gibi olmadı\n\n" +
 "Çünkü artık güzel bir şey olduğunda onu seninle paylaşmak istiyorum\n" +
@@ -182,7 +166,6 @@ const secretMessage =
 "İyi ki hayatımda sen varsın\n\n" +
 "Ve eğer bir gün bana bu hikayenin en güzel tarafı neydi diye sorarsan\n" +
 "cevabım hiç düşünmeden sen olursun ❤️";
-
 let secretIndex = 0;
 function writeSecret() {
     if (secretIndex < secretMessage.length) {
@@ -191,7 +174,6 @@ function writeSecret() {
         setTimeout(writeSecret, 35);
     }
 }
-
 secretBtn.addEventListener("click", function () {
     secretBox.classList.add("show");
     secretText.textContent = "";
@@ -211,30 +193,55 @@ secretBtn.addEventListener("click", function () {
         setTimeout(() => heart.remove(), 3000);
     }
 });
+closeSecret.addEventListener("click", function () { secretBox.classList.remove("show"); });
 
-closeSecret.addEventListener("click", function () {
-    secretBox.classList.remove("show");
-});
-
-// SENİ NEDEN SEVİYORUM?
+// SENİ NEDEN SEVİYORUM? - DAHA FAZLA VE SADE SEBEPLER
 const reasons = [
-    "Gülüşün en sıradan günü bile benim için güzelleştiriyor",
-    "Sesini duyduğumda içimde tarif edemediğim bir huzur oluşuyor",
-    "Yanında kendim olabiliyorum ve bu benim için çok değerli",
-    "Bana baktığında dünyanın geri kalanı bir anlığına susuyor",
-    "En güzel hayallerimin içinde hep sen varsın",
-    "Mutluluğumu paylaşmak istediğim ilk kişi sensin",
-    "Zor bir günün sonunda bile seni düşünmek yüzümü güldürüyor",
-    "Seninle geleceği düşünmek bana korku değil heyecan veriyor",
-    "Kalbimin en güzel yerinde sana ait bir yer var",
-    "Çünkü seni sevmek benim için bir seçimden çok kalbimin doğal hali ❤️"
+    "Gülüşün",
+    "Sesin",
+    "Bakışların",
+    "Yanımda oluşun",
+    "Beni anlayışın",
+    "Beni dinleyişin",
+    "Küçük şeyleri hatırlaman",
+    "Benimle gülmen",
+    "Bana güvenmen",
+    "Bana huzur vermen",
+    "Yanında kendim olabilmem",
+    "Sesini duyunca mutlu olmam",
+    "Gülüşünü görmek istemem",
+    "Beni olduğum gibi kabul etmen",
+    "En zor anımda yanımda olman",
+    "Mutluluğumu önemsemen",
+    "Hayallerime ortak olman",
+    "Geleceği seninle düşünmem",
+    "Seninle konuşmanın hiç sıkıcı olmaması",
+    "Birlikte susmanın bile güzel olması",
+    "Bana kendimi değerli hissettirmem",
+    "Kalbime iyi gelmen",
+    "Varlığın",
+    "Sabrın",
+    "Şefkatin",
+    "Samimiyetin",
+    "Tatlılığın",
+    "Masum gülüşün",
+    "Bana bakışın",
+    "Yanımda huzurlu hissetmen",
+    "Kötü günlerimi güzelleştirmen",
+    "İyi günlerimi daha da güzelleştirmen",
+    "Beni merak etmen",
+    "Beni özlemen",
+    "Birlikte kurduğumuz hayaller",
+    "Birlikte biriktirdiğimiz anılar",
+    "Seni düşündüğümde yüzümün gülmesi",
+    "Kalbimde sana ait bir yer olması",
+    "Çünkü sen sensin ❤️"
 ];
 const reasonBtn = document.getElementById("reasonBtn");
 const reasonText = document.getElementById("reasonText");
 const reasonNumber = document.getElementById("reasonNumber");
 const reasonCard = document.getElementById("reasonCard");
 let reasonIndex = 0;
-
 if (reasonBtn) {
     reasonBtn.addEventListener("click", function () {
         reasonIndex = (reasonIndex + 1) % reasons.length;
@@ -246,19 +253,15 @@ if (reasonBtn) {
     });
 }
 
-// KÜÇÜK GİZLİ SIR
 const secretLittleBtn = document.getElementById("secretLittleBtn");
 if (secretLittleBtn) {
     secretLittleBtn.addEventListener("click", function () {
         secretLittleBtn.textContent = "🤍 Seni her gün yeniden seçiyorum";
         secretLittleBtn.style.color = "#ff91bd";
-        setTimeout(() => {
-            secretLittleBtn.textContent = "🤍 Bir sırrı daha var";
-        }, 3500);
+        setTimeout(() => { secretLittleBtn.textContent = "🤍 Bir sırrı daha var"; }, 3500);
     });
 }
 
-// GELECEĞE MEKTUP MODALI
 const futureLetterBtn = document.getElementById("futureLetterBtn");
 const futureModal = document.getElementById("futureModal");
 const closeFutureModal = document.getElementById("closeFutureModal");
@@ -281,7 +284,6 @@ if (closeFutureModal && futureModal) {
     });
 }
 
-// FİNAL BÖLÜMÜNDE HAFİF YILDIZ PARÇACIKLARI
 const finalStars = document.getElementById("finalStars");
 if (finalStars) {
     for (let s = 0; s < 35; s++) {
