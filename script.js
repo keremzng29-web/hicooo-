@@ -109,13 +109,11 @@ const wishReveal = document.getElementById("wishReveal");
 
 function createShootingStar() {
     if (!shootingStars) return;
-
     const star = document.createElement("span");
     star.className = "shooting-star";
     star.style.left = (45 + Math.random() * 55) + "%";
     star.style.top = (2 + Math.random() * 42) + "%";
     shootingStars.appendChild(star);
-
     requestAnimationFrame(() => star.classList.add("go"));
     setTimeout(() => star.remove(), 1400);
 }
@@ -137,10 +135,8 @@ if (starSection) {
     observer.observe(starSection);
 }
 
-// Dilek tutulduğunda yıldız parçacıkları
 function createWishSpark() {
     if (!wishStars) return;
-
     const spark = document.createElement("span");
     spark.className = "wish-spark";
     spark.style.left = (35 + Math.random() * 30) + "%";
@@ -154,24 +150,11 @@ function createWishSpark() {
 if (wishBtn) {
     wishBtn.addEventListener("click", function () {
         if (starSection) starSection.classList.add("wish-active");
-
-        // Butona basınca önce dilek mesajı, ardından asıl romantik yazı açılır
         wishMessage.textContent = "Dileğini tuttun... Şimdi gökyüzüne bırak ✨";
         wishMessage.classList.add("wish-made");
-
-        if (wishReveal) {
-            setTimeout(() => wishReveal.classList.add("show"), 700);
-        }
-
-        for (let s = 0; s < 35; s++) {
-            setTimeout(createWishSpark, s * 35);
-        }
-
-        for (let s = 0; s < 7; s++) {
-            setTimeout(createShootingStar, s * 280);
-        }
-
-        // Buton tekrar basılırsa efekt yeniden çalışsın
+        if (wishReveal) setTimeout(() => wishReveal.classList.add("show"), 700);
+        for (let s = 0; s < 35; s++) setTimeout(createWishSpark, s * 35);
+        for (let s = 0; s < 7; s++) setTimeout(createShootingStar, s * 280);
         setTimeout(() => {
             wishMessage.textContent = "Belki de en güzel dileğin zaten yanında... ❤️";
         }, 3200);
@@ -201,7 +184,6 @@ const secretMessage =
 "cevabım hiç düşünmeden sen olursun ❤️";
 
 let secretIndex = 0;
-
 function writeSecret() {
     if (secretIndex < secretMessage.length) {
         secretText.textContent += secretMessage.charAt(secretIndex);
@@ -215,7 +197,6 @@ secretBtn.addEventListener("click", function () {
     secretText.textContent = "";
     secretIndex = 0;
     writeSecret();
-
     for (let h = 0; h < 30; h++) {
         const heart = document.createElement("div");
         heart.className = "secret-heart";
@@ -234,3 +215,87 @@ secretBtn.addEventListener("click", function () {
 closeSecret.addEventListener("click", function () {
     secretBox.classList.remove("show");
 });
+
+// SENİ NEDEN SEVİYORUM?
+const reasons = [
+    "Gülüşün en sıradan günü bile benim için güzelleştiriyor",
+    "Sesini duyduğumda içimde tarif edemediğim bir huzur oluşuyor",
+    "Yanında kendim olabiliyorum ve bu benim için çok değerli",
+    "Bana baktığında dünyanın geri kalanı bir anlığına susuyor",
+    "En güzel hayallerimin içinde hep sen varsın",
+    "Mutluluğumu paylaşmak istediğim ilk kişi sensin",
+    "Zor bir günün sonunda bile seni düşünmek yüzümü güldürüyor",
+    "Seninle geleceği düşünmek bana korku değil heyecan veriyor",
+    "Kalbimin en güzel yerinde sana ait bir yer var",
+    "Çünkü seni sevmek benim için bir seçimden çok kalbimin doğal hali ❤️"
+];
+const reasonBtn = document.getElementById("reasonBtn");
+const reasonText = document.getElementById("reasonText");
+const reasonNumber = document.getElementById("reasonNumber");
+const reasonCard = document.getElementById("reasonCard");
+let reasonIndex = 0;
+
+if (reasonBtn) {
+    reasonBtn.addEventListener("click", function () {
+        reasonIndex = (reasonIndex + 1) % reasons.length;
+        reasonText.textContent = reasons[reasonIndex];
+        reasonNumber.textContent = String(reasonIndex + 1).padStart(2, "0");
+        reasonCard.classList.remove("pop");
+        void reasonCard.offsetWidth;
+        reasonCard.classList.add("pop");
+    });
+}
+
+// KÜÇÜK GİZLİ SIR
+const secretLittleBtn = document.getElementById("secretLittleBtn");
+if (secretLittleBtn) {
+    secretLittleBtn.addEventListener("click", function () {
+        secretLittleBtn.textContent = "🤍 Seni her gün yeniden seçiyorum";
+        secretLittleBtn.style.color = "#ff91bd";
+        setTimeout(() => {
+            secretLittleBtn.textContent = "🤍 Bir sırrı daha var";
+        }, 3500);
+    });
+}
+
+// GELECEĞE MEKTUP MODALI
+const futureLetterBtn = document.getElementById("futureLetterBtn");
+const futureModal = document.getElementById("futureModal");
+const closeFutureModal = document.getElementById("closeFutureModal");
+if (futureLetterBtn && futureModal) {
+    futureLetterBtn.addEventListener("click", function () {
+        futureModal.classList.add("show");
+        document.body.style.overflow = "hidden";
+    });
+}
+if (closeFutureModal && futureModal) {
+    closeFutureModal.addEventListener("click", function () {
+        futureModal.classList.remove("show");
+        document.body.style.overflow = "";
+    });
+    futureModal.addEventListener("click", function (e) {
+        if (e.target === futureModal) {
+            futureModal.classList.remove("show");
+            document.body.style.overflow = "";
+        }
+    });
+}
+
+// FİNAL BÖLÜMÜNDE HAFİF YILDIZ PARÇACIKLARI
+const finalStars = document.getElementById("finalStars");
+if (finalStars) {
+    for (let s = 0; s < 35; s++) {
+        const star = document.createElement("span");
+        star.style.position = "absolute";
+        star.style.width = (1 + Math.random() * 3) + "px";
+        star.style.height = star.style.width;
+        star.style.borderRadius = "50%";
+        star.style.background = "white";
+        star.style.left = Math.random() * 100 + "%";
+        star.style.top = Math.random() * 100 + "%";
+        star.style.opacity = (0.25 + Math.random() * 0.7).toFixed(2);
+        star.style.boxShadow = "0 0 8px white";
+        star.style.animation = `twinkle ${2 + Math.random() * 4}s ${Math.random() * 3}s infinite alternate`;
+        finalStars.appendChild(star);
+    }
+}
