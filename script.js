@@ -195,47 +195,8 @@ secretBtn.addEventListener("click", function () {
 });
 closeSecret.addEventListener("click", function () { secretBox.classList.remove("show"); });
 
-// SENİ NEDEN SEVİYORUM? - DAHA FAZLA VE SADE SEBEPLER
 const reasons = [
-    "Gülüşün",
-    "Sesin",
-    "Bakışların",
-    "Yanımda oluşun",
-    "Beni anlayışın",
-    "Beni dinleyişin",
-    "Küçük şeyleri hatırlaman",
-    "Benimle gülmen",
-    "Bana güvenmen",
-    "Bana huzur vermen",
-    "Yanında kendim olabilmem",
-    "Sesini duyunca mutlu olmam",
-    "Gülüşünü görmek istemem",
-    "Beni olduğum gibi kabul etmen",
-    "En zor anımda yanımda olman",
-    "Mutluluğumu önemsemen",
-    "Hayallerime ortak olman",
-    "Geleceği seninle düşünmem",
-    "Seninle konuşmanın hiç sıkıcı olmaması",
-    "Birlikte susmanın bile güzel olması",
-    "Bana kendimi değerli hissettirmem",
-    "Kalbime iyi gelmen",
-    "Varlığın",
-    "Sabrın",
-    "Şefkatin",
-    "Samimiyetin",
-    "Tatlılığın",
-    "Masum gülüşün",
-    "Bana bakışın",
-    "Yanımda huzurlu hissetmen",
-    "Kötü günlerimi güzelleştirmen",
-    "İyi günlerimi daha da güzelleştirmen",
-    "Beni merak etmen",
-    "Beni özlemen",
-    "Birlikte kurduğumuz hayaller",
-    "Birlikte biriktirdiğimiz anılar",
-    "Seni düşündüğümde yüzümün gülmesi",
-    "Kalbimde sana ait bir yer olması",
-    "Çünkü sen sensin ❤️"
+    "Gülüşün","Sesin","Bakışların","Yanımda oluşun","Beni anlayışın","Beni dinleyişin","Küçük şeyleri hatırlaman","Benimle gülmen","Bana güvenmen","Bana huzur vermen","Yanında kendim olabilmem","Sesini duyunca mutlu olmam","Gülüşünü görmek istemem","Beni olduğum gibi kabul etmen","En zor anımda yanımda olman","Mutluluğumu önemsemen","Hayallerime ortak olman","Geleceği seninle düşünmem","Seninle konuşmanın hiç sıkıcı olmaması","Birlikte susmanın bile güzel olması","Bana kendimi değerli hissettirmem","Kalbime iyi gelmen","Varlığın","Sabrın","Şefkatin","Samimiyetin","Tatlılığın","Masum gülüşün","Bana bakışın","Yanımda huzurlu hissetmen","Kötü günlerimi güzelleştirmen","İyi günlerimi daha da güzelleştirmen","Beni merak etmen","Beni özlemen","Birlikte kurduğumuz hayaller","Birlikte biriktirdiğimiz anılar","Seni düşündüğümde yüzümün gülmesi","Kalbimde sana ait bir yer olması","Çünkü sen sensin ❤️"
 ];
 const reasonBtn = document.getElementById("reasonBtn");
 const reasonText = document.getElementById("reasonText");
@@ -300,4 +261,104 @@ if (finalStars) {
         star.style.animation = `twinkle ${2 + Math.random() * 4}s ${Math.random() * 3}s infinite alternate`;
         finalStars.appendChild(star);
     }
+}
+
+// ŞİİR BÖLÜMÜ — başlık ve paylaşan kişi bilgileri olmadan yalnızca şiir metinleri
+const poems = [
+`Ya dayan ey güzel gözlüm
+Ya da yan olmazsa eğer ki
+Solmuş zaten tüm umutlarım
+Artık bana ne iyi gelir ki
+Bir tutam senden koklat bana
+Kızma lütfen son kezdir belki
+Kendinden koy bir yudum da
+Yarat bende sonsuz bir etki`,
+`Beceriksiz biriyimdir kabul
+Bir çayı demlemeyi bir takvimi takip etmeyi
+Hep unuturum
+
+Ama seni bir gün bile eksik sevmedim
+Bu benim hayattaki tek dürüst ustalığım`,
+`Ah bir satır fazla yazabilsem seni
+Tek derdim seni anlatmak değil mi zaten
+Ne olur yeni bir dil keşfetsem
+Bir dil bin insana ulaşmaz mı
+Binbir insana anlatsam seni
+Olmaz mı
+
+Yetiremiyorum seni yazmalara
+İlhamım gözlerin değil mi zaten
+Bir şiirlik sev dedim olmaz mı
+Ömrümüz on satırsa sen on bir satırsın
+İnadım inat dün sevdim bugün seviyorum
+Yarın elbet benim olacaksın`,
+`Gözlerin değince sustu bütün rüzgârlar
+Kalbimde yeşerdi solmuş bütün baharlar
+Sana değil sensiz geçen yıllarıma ağlarım
+Çünkü cennet dediğim yer gözlerinde başlar`,
+`Gözlerinin büyüsüne kapıldım
+Ve kendime Sen diye bir dünya kurdum
+Günler tarihler ve mevsimler
+Bunların hepsi gereksiz şeyler
+Benim dünyamda sensin bütün saatler
+Benim dünyamda sensin bütün iklimler
+Buralarda aşk senle başlar
+Ve yalnızca senle biter`,
+`Kendimi ararken
+Seni bulmak isterim
+Çarşıya diye çıkıp
+Sana uğrar adımlarım
+
+Senli cümleler kurup
+Senli şarkılar söylerim
+Başımı kaldırıp
+Gökyüzüne bakmak isterim
+
+Dikenli yollarda yürüyüp
+Sende açar güllerim`,
+`Arzu hâl eyledim mâh güzele
+Ömrümün vadesi kirpiğindedir
+Aşkın ateşi düşmüş gönlüme
+Vallahi tek şifam gözlerindedir`,
+`Bana neden sen diye sorma
+Ben de soruyorum
+Neden seçtim seni
+Bakışın mı çaldı beni
+Yoksa o mahcup sesin mi
+Aklımdan çıkmıyor ki
+En damarın heybeti
+
+Onca insan içinden
+Ben mi buldum seni
+Yoksa sen mi beni
+
+Aşkta tesadüf olmaz
+Seni bana getiren
+Ezelden yazılmış bir kaderdi`,
+`Şimdi şiir bence senin yüzündür
+Şimdi benim tahtım senin dizindir
+Sevgilim saadet ikimizinindir
+Göklerden gelen bir yadigâr gibi
+
+Sözün şiirlerin mükemmelidir
+Senden başkasını seven delidir
+Yüzün çiçeklerin en güzelidir
+Gözlerin bilinmez bir diyar gibi`
+];
+const poemBtn = document.getElementById("poemBtn");
+const poemText = document.getElementById("poemText");
+const poemCard = document.querySelector("#poemSection .poem-card");
+const poemCount = document.getElementById("poemCount");
+let poemIndex = -1;
+if (poemBtn && poemText) {
+    poemBtn.addEventListener("click", function () {
+        poemIndex = (poemIndex + 1) % poems.length;
+        poemText.textContent = poems[poemIndex];
+        if (poemCount) poemCount.textContent = `${poemIndex + 1} / ${poems.length}`;
+        if (poemCard) {
+            poemCard.classList.remove("change");
+            void poemCard.offsetWidth;
+            poemCard.classList.add("change");
+        }
+    });
 }
