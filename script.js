@@ -263,7 +263,6 @@ if (finalStars) {
     }
 }
 
-// ŞİİR BÖLÜMÜ — başlık ve paylaşan kişi bilgileri olmadan yalnızca şiir metinleri
 const poems = [
 `Ya dayan ey güzel gözlüm
 Ya da yan olmazsa eğer ki
@@ -343,22 +342,26 @@ Göklerden gelen bir yadigâr gibi
 Sözün şiirlerin mükemmelidir
 Senden başkasını seven delidir
 Yüzün çiçeklerin en güzelidir
-Gözlerin bilinmez bir diyar gibi`
+Gözlerin bilinmez bir diyar gibi`,
+`Oysa benim
+gönül kapım
+kilitli ve şifreliydi...
+
+Demek bütün
+kodlar ve şifreler
+senin bakışlarında gizli...
+
+Herkes birine yanık
+Ben sana külüm...`
 ];
-const poemBtn = document.getElementById("poemBtn");
-const poemText = document.getElementById("poemText");
-const poemCard = document.querySelector("#poemSection .poem-card");
-const poemCount = document.getElementById("poemCount");
 let poemIndex = -1;
+const poemText = document.getElementById("poemText");
+const poemBtn = document.getElementById("poemBtn");
+const poemCount = document.getElementById("poemCount");
 if (poemBtn && poemText) {
     poemBtn.addEventListener("click", function () {
         poemIndex = (poemIndex + 1) % poems.length;
         poemText.textContent = poems[poemIndex];
         if (poemCount) poemCount.textContent = `${poemIndex + 1} / ${poems.length}`;
-        if (poemCard) {
-            poemCard.classList.remove("change");
-            void poemCard.offsetWidth;
-            poemCard.classList.add("change");
-        }
     });
 }
