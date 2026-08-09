@@ -23,6 +23,20 @@ const photoSongs = {
   const images = document.querySelectorAll('.gallery-grid img');
   if (!lightbox || !lightboxImage || !closeLightbox) return;
 
+  // Fotoğraf üstte, Spotify şarkısı hemen altında görünsün.
+  const style = document.createElement('style');
+  style.textContent = `
+    #lightbox { flex-direction: column !important; gap: 18px; padding: 70px 20px 30px; overflow-y: auto; }
+    #lightbox img { display:block; width:auto; max-width:min(88vw,900px); max-height:65vh; object-fit:contain; border-radius:20px; }
+    .photo-spotify-player { display:block; width:min(88vw,520px); height:152px; border:0; border-radius:14px; box-shadow:0 0 30px rgba(255,79,139,.25); flex:none; }
+    @media(max-width:600px){
+      #lightbox { gap:12px; padding:65px 10px 20px; }
+      #lightbox img { max-width:94vw; max-height:58vh; }
+      .photo-spotify-player { width:94vw; height:152px; }
+    }
+  `;
+  document.head.appendChild(style);
+
   let spotifyFrame = null;
 
   images.forEach((image, index) => {
@@ -33,11 +47,13 @@ const photoSongs = {
       // Ana site müziğini durdur.
       if (bgMusic) bgMusic.pause();
 
-      // Önceki Spotify oynatıcısını temizle.
+      // Önceki oynatıcıyı temizle.
       if (spotifyFrame) spotifyFrame.remove();
 
-      // Fotoğraf görünür kalır; Spotify oynatıcı hemen altında açılır.
+      // Fotoğraf görünür kalacak.
       lightboxImage.style.display = 'block';
+
+      // Şarkı fotoğrafın hemen altında açılacak.
       spotifyFrame = document.createElement('iframe');
       spotifyFrame.className = 'photo-spotify-player';
       spotifyFrame.src = `https://open.spotify.com/embed/track/${trackId}?utm_source=generator`;
