@@ -12,7 +12,14 @@ const photoSongs = {
   10: '0IECKI1BORaqZxdZefcp2V',
   11: '1wwM4MvZy8pTRn6tJdSiNL',
   12: '1QgmzvY34jV3O2PIP4yYAA',
-  13: '3H2RwnEAFjyv8eYOwOtXsr'
+  13: '3H2RwnEAFjyv8eYOwOtXsr',
+  14: '75h4Bilr9NatfonTWxEQXB',
+  15: '10rrwswgloUmT2ZexgJkLU',
+  16: '6PxG1HYI9yPEXPleIdNfhE',
+  17: '3r1hJx8A3gltwtceCagRd9',
+  18: '2XjdDzTbdKjtnGTiQrrlvE',
+  19: '2zUOJtjrIs4O1Ac4WMhIq4',
+  20: '08N6mfVAanBbO0E59PFn58'
 };
 
 (function () {
@@ -23,7 +30,6 @@ const photoSongs = {
   const images = document.querySelectorAll('.gallery-grid img');
   if (!lightbox || !lightboxImage || !closeLightbox) return;
 
-  // Fotoğraf üstte, Spotify şarkısı hemen altında görünsün.
   const style = document.createElement('style');
   style.textContent = `
     #lightbox { flex-direction: column !important; gap: 18px; padding: 70px 20px 30px; overflow-y: auto; }
@@ -44,16 +50,11 @@ const photoSongs = {
       const trackId = photoSongs[index + 1];
       if (!trackId) return;
 
-      // Ana site müziğini durdur.
       if (bgMusic) bgMusic.pause();
-
-      // Önceki oynatıcıyı temizle.
       if (spotifyFrame) spotifyFrame.remove();
 
-      // Fotoğraf görünür kalacak.
       lightboxImage.style.display = 'block';
 
-      // Şarkı fotoğrafın hemen altında açılacak.
       spotifyFrame = document.createElement('iframe');
       spotifyFrame.className = 'photo-spotify-player';
       spotifyFrame.src = `https://open.spotify.com/embed/track/${trackId}?utm_source=generator`;
