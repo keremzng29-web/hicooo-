@@ -1,0 +1,24 @@
+/* Bir Şiir Daha — romantik tasarım */
+.poem-section{
+  min-height:95vh;
+  padding:110px 20px 90px;
+  background:radial-gradient(circle at 78% 48%,rgba(255,70,150,.12),transparent 34%),linear-gradient(180deg,#030003 0%,#10000d 52%,#030003 100%);
+  position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;text-align:center;
+}
+.poem-section::before{content:"";position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,.8) 0 1px,transparent 1.8px);background-size:90px 90px;opacity:.38;pointer-events:none;animation:poemStars 9s ease-in-out infinite alternate}
+.poem-section::after{content:"♥  ♥  ♥";position:absolute;top:14%;right:5%;font-size:22px;letter-spacing:28px;color:rgba(255,90,170,.2);filter:drop-shadow(0 0 12px #ff4f9b);transform:rotate(-12deg);pointer-events:none}
+.poem-inner{width:min(1180px,96vw);position:relative;z-index:2}
+.poem-inner .mini-title{color:#ff79b3;letter-spacing:5px;margin-bottom:14px}
+.poem-title{font-family:Georgia,'Times New Roman',serif!important;font-size:58px!important;color:#fff!important;text-shadow:0 0 18px rgba(255,90,170,.65),0 0 45px rgba(255,30,130,.3);margin-bottom:12px}
+.poem-title::after{content:"♡────────♡";display:block;font-family:Poppins,sans-serif;font-size:15px;letter-spacing:4px;color:#ff6eaa;margin:8px auto 30px}
+.poem-intro{font-size:16px;color:#cdbbc8;margin-bottom:32px;letter-spacing:.5px}
+.poem-card{width:min(760px,94vw);min-height:300px;margin:0 auto;padding:42px 48px;border:1px solid rgba(255,90,165,.42);border-radius:26px;background:linear-gradient(145deg,rgba(255,255,255,.055),rgba(255,30,130,.035));box-shadow:0 0 35px rgba(255,60,150,.13),inset 0 0 35px rgba(255,60,150,.035);backdrop-filter:blur(10px);display:flex;align-items:center;justify-content:center;position:relative}
+.poem-card::before,.poem-card::after{content:"";position:absolute;height:1px;width:34%;background:linear-gradient(90deg,transparent,#ff72ad,transparent);bottom:44px}
+.poem-card::before{left:5%}.poem-card::after{right:5%}
+.poem-text{font-family:Georgia,'Times New Roman',serif!important;font-style:italic;font-size:22px!important;line-height:2!important;color:#f9edf4!important;text-shadow:0 0 10px rgba(255,255,255,.1);white-space:pre-line;max-width:650px}
+.poem-btn{margin-top:34px!important;padding:16px 40px!important;background:linear-gradient(135deg,#ff3f83,#ff72ae)!important;box-shadow:0 0 24px rgba(255,60,140,.45),0 0 55px rgba(255,60,140,.12)!important;font-size:18px!important}
+.poem-btn:hover{transform:scale(1.08)!important;box-shadow:0 0 38px rgba(255,60,140,.8)!important}
+.poem-count{margin-top:18px;color:#ffb3d1!important;font-size:14px;letter-spacing:2px}
+.poem-count::before{content:"❧  ";color:#ff6ca7}.poem-count::after{content:"  ❧";color:#ff6ca7}
+@keyframes poemStars{from{transform:translateY(0);opacity:.25}to{transform:translateY(-18px);opacity:.5}}
+@media(max-width:700px){.poem-section{padding:80px 14px}.poem-title{font-size:42px!important}.poem-card{padding:35px 22px;min-height:270px}.poem-text{font-size:18px!important;line-height:1.8!important}.poem-title::after{font-size:12px;letter-spacing:2px}.poem-section::after{display:none}}
