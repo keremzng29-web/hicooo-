@@ -1,0 +1,159 @@
+/* ŞİİR BÖLÜMÜ — romantik gece / yıldız konsepti */
+.poem-section{
+  min-height:100vh;
+  padding:110px 20px 120px;
+  position:relative;
+  overflow:hidden;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  background:
+    radial-gradient(circle at 50% 20%,rgba(255,70,150,.14),transparent 30%),
+    radial-gradient(circle at 20% 80%,rgba(120,40,180,.10),transparent 28%),
+    linear-gradient(180deg,#020006 0%,#09000d 48%,#020006 100%);
+}
+
+.poem-section::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  opacity:.8;
+  background-image:
+    radial-gradient(circle,rgba(255,255,255,.9) 0 1px,transparent 1.8px),
+    radial-gradient(circle,rgba(255,170,220,.65) 0 1px,transparent 1.7px);
+  background-size:83px 83px,137px 119px;
+  background-position:12px 18px,44px 60px;
+  animation:poemStars 9s ease-in-out infinite alternate;
+}
+
+.poem-section::after{
+  content:"♥";
+  position:absolute;
+  left:7%;
+  bottom:8%;
+  font-size:130px;
+  color:rgba(255,80,160,.035);
+  transform:rotate(-18deg);
+  pointer-events:none;
+}
+
+.poem-inner{
+  width:min(900px,94vw);
+  position:relative;
+  z-index:3;
+  padding:25px 10px;
+}
+
+.poem-inner .mini-title{
+  margin-bottom:16px;
+  color:#d9c4d5;
+  font-size:14px;
+  letter-spacing:5px;
+  text-transform:uppercase;
+}
+
+.poem-title{
+  margin:0!important;
+  font-size:clamp(42px,6vw,68px)!important;
+  line-height:1.1;
+  letter-spacing:1px;
+  color:#fff;
+  text-shadow:0 0 12px rgba(255,255,255,.3),0 0 35px rgba(255,79,139,.7),0 0 70px rgba(255,79,139,.35);
+}
+
+.poem-intro{
+  margin:18px auto 34px;
+  color:#cbbec9;
+  font-size:18px;
+  line-height:1.7;
+}
+
+.poem-card{
+  width:min(760px,92vw);
+  min-height:250px;
+  margin:0 auto;
+  padding:42px 38px;
+  position:relative;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:30px;
+  border:1px solid rgba(255,112,175,.35);
+  background:linear-gradient(145deg,rgba(255,255,255,.07),rgba(255,79,139,.035));
+  box-shadow:0 0 25px rgba(255,79,139,.12),0 0 80px rgba(255,40,140,.08),inset 0 0 35px rgba(255,255,255,.025);
+  backdrop-filter:blur(14px);
+  overflow:hidden;
+}
+
+.poem-card::before{
+  content:"❦";
+  position:absolute;
+  top:15px;
+  left:25px;
+  font-size:27px;
+  color:#ff79ae;
+  opacity:.8;
+}
+
+.poem-card::after{
+  content:"❦";
+  position:absolute;
+  bottom:10px;
+  right:25px;
+  font-size:27px;
+  color:#ff79ae;
+  opacity:.8;
+  transform:rotate(180deg);
+}
+
+.poem-text{
+  width:100%;
+  max-width:650px;
+  margin:0!important;
+  color:#fff;
+  font-family:Georgia,'Times New Roman',serif;
+  font-size:clamp(20px,3vw,27px)!important;
+  line-height:2!important;
+  letter-spacing:.3px;
+  text-shadow:0 0 12px rgba(255,255,255,.18);
+  white-space:pre-line;
+}
+
+.poem-btn{
+  margin-top:30px!important;
+  padding:16px 36px!important;
+  border:1px solid rgba(255,255,255,.18)!important;
+  background:linear-gradient(135deg,#ff4f8b,#ff78b0)!important;
+  box-shadow:0 0 22px rgba(255,79,139,.35),0 0 50px rgba(255,79,139,.12)!important;
+  font-size:17px!important;
+  position:relative;
+  z-index:4;
+}
+
+.poem-btn:hover{
+  transform:translateY(-2px) scale(1.05)!important;
+  box-shadow:0 0 35px rgba(255,79,139,.7),0 0 70px rgba(255,79,139,.2)!important;
+}
+
+.poem-count{
+  min-height:24px;
+  margin-top:16px;
+  color:#bfaebc;
+  font-size:13px;
+  letter-spacing:2px;
+}
+
+@keyframes poemStars{
+  from{transform:scale(1);opacity:.55}
+  to{transform:scale(1.035);opacity:.95}
+}
+
+@media(max-width:768px){
+  .poem-section{padding:90px 14px 100px}
+  .poem-inner{padding:10px 4px}
+  .poem-card{min-height:230px;padding:38px 22px}
+  .poem-intro{font-size:16px}
+  .poem-text{line-height:1.85!important}
+}
